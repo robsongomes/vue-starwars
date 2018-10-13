@@ -1,20 +1,26 @@
 <template>
-    <h1>Planet {{ planet.name }}</h1>
+    <div class="card planet col-md-3">
+        <h5 class="card-header">{{planet.name}}</h5>
+        <div class="card-body">
+            <p class="card-text">
+                <ul>
+                    <li>diameter: {{planet.diameter | toKm }}</li>
+                    <li>population: {{planet.population}}</li>
+                </ul>
+            </p>
+        </div>
+    </div>
 </template>
 
 <script>
-import PlanetService from "../services/PlanetService";
 export default {
-    data() {
-        return {
-            planet: {}
+    props: ['planet'],
+    filters: {
+        toKm: function(value) {
+            if (value === 'unknown') return value
+            return `${value} Km²`
         }
     },
-    watch: {
-        async '$route' (to, from) {
-            this.planet = await PlanetService.getPlanet(to.params.id)
-        }
-    }
 }
 </script>
 

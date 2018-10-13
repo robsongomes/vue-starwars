@@ -1,6 +1,6 @@
 import Characters from './components/Characters'
 import Planets from './components/Planets'
-import Planet from './components/Planet'
+import CharacterPlanet from './components/CharacterPlanet'
 import Home from './components/Home'
 
 export const routes = [
@@ -9,7 +9,7 @@ export const routes = [
         children: [
             {
                 path: 'planet/:id',
-                component: Planet,
+                component: CharacterPlanet,
             }
         ]
     },

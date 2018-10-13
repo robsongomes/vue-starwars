@@ -5,7 +5,8 @@ class PlanetService {
     static async getPlanets() {
         return new Promise( async (res, rej) => {
             try {
-                const planets = await fetch(URI)
+                const page = Math.floor(Math.random() * 6) + 1;
+                const planets = await fetch(`${URI}?page=${page}`)
                 res(planets.json())
             } catch (error) {
                 rej(error)
